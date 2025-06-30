@@ -23,12 +23,6 @@ export default function Header() {
             </h1>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
-            <a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">Services</a>
-            <a href="#portfolio" className="text-muted-foreground hover:text-foreground transition-colors">Works</a>
-            <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
-          </nav>
 
           <div className="flex items-center space-x-4">
             <button
@@ -48,17 +42,6 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <nav className="md:hidden py-4 animate-fade-in">
-            <div className="flex flex-col space-y-3">
-              <a href="#home" className="text-muted-foreground hover:text-foreground transition-colors py-2">Home</a>
-              <a href="#services" className="text-muted-foreground hover:text-foreground transition-colors py-2">Services</a>
-              <a href="#portfolio" className="text-muted-foreground hover:text-foreground transition-colors py-2">Works</a>
-              <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors py-2">Contact</a>
-            </div>
-          </nav>
-        )}
       </div>
     </header>
   )

@@ -6,7 +6,6 @@ async function getPortfolioData() {
     const res = await fetch(
       'https://quick-web-admin-xktl.vercel.app/api/v1/public/contents/6740c9e0-0035-45c0-b22a-fd5a3930ea76?type=card',
       { 
-        cache: 'no-store',
         next: { revalidate: 60 }
       }
     )
@@ -25,7 +24,7 @@ async function getPortfolioData() {
         description: item.description || `Published on ${new Date(item.publishedAt).toLocaleDateString()}`,
         image: item.thumbnail?.url || '/placeholder-1.jpg',
         tags: ['Web', 'Design'],
-        link: item.link || '#',
+        link: item.metadata?.links?.[0]?.url || item.link || '#',
         publishedAt: item.publishedAt
       }))
     }

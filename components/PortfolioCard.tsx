@@ -23,8 +23,22 @@ export default function PortfolioCard({ item }: PortfolioCardProps) {
   const [isLiked, setIsLiked] = useState(false)
   const [imageError, setImageError] = useState(false)
 
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Prevent navigation when clicking on action buttons
+    if ((e.target as HTMLElement).closest('button') || (e.target as HTMLElement).closest('a')) {
+      return
+    }
+    
+    if (item.link && item.link !== '#') {
+      window.open(item.link, '_blank', 'noopener,noreferrer')
+    }
+  }
+
   return (
-    <div className="group relative bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <div 
+      className="group relative bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+      onClick={handleCardClick}
+    >
       {/* Image Container */}
       <div className="relative aspect-[16/10] overflow-hidden bg-muted">
         {!imageError ? (

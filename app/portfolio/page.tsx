@@ -5,7 +5,6 @@ async function getPortfolioData() {
     const res = await fetch(
       'https://quick-web-admin-xktl.vercel.app/api/v1/public/contents/6740c9e0-0035-45c0-b22a-fd5a3930ea76?type=card',
       { 
-        cache: 'no-store',
         next: { revalidate: 60 } // Revalidate every 60 seconds
       }
     )
@@ -21,10 +20,10 @@ async function getPortfolioData() {
         id: item.id || Math.random(),
         title: item.title,
         category: item.category || 'Web Development',
-        description: item.description || 'A modern web project',
+        description: item.description || item.excerpt || 'A modern web project',
         image: item.thumbnail?.url || '/placeholder-1.jpg',
         tags: item.tags || ['Web', 'Design'],
-        link: item.link || '#',
+        link: item.metadata?.links?.[0]?.url || item.link || '#',
         publishedAt: item.publishedAt
       }))
     }
